@@ -3,9 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 // 使用element-ui
 import Element from 'element-ui'
 import 'element-ui/lib/theme-default/index.css';
+import './styles/index.scss';
+import 'components/Icon-svg/index';
+import 'assets/iconfont/iconfont';
+import 'normalize.css/normalize.css';
 import * as filters from './filters'
 import './mock/index.js'
 
@@ -21,6 +26,6 @@ Object.keys(filters).forEach(key => {
 
 /* eslint-disable no-new */
 new Vue({
-  router,
-  render: h => h(App)
+	router,
+	render: h => h(App)
 }).$mount('#app');
