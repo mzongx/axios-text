@@ -1,18 +1,17 @@
+import Cookies from 'js-cookie'
 export default {
-	state: {
-		user: '',
-		status: '',
-		email: '',
-		code: '',
-		uid: undefined,
-		auth_type: '',
-		// token: Cookies.get('X-Ivanka-Token'),
-		name: '',
-		avatar: '',
-		introduction: '',
-		roles: [],
-		setting: {
-			articlePlatform: []
-		}
+	user: '',
+	status: '',
+	email: '1052036428@qq.com',
+	code: '',
+	uid: undefined,
+	auth_type: '',
+	token: Cookies.get('X-Ivanka-Token'),
+	name: 'mzong',
+	avatar: '../../static/images/logo.jpg',
+	introduction: '',
+	roles: [],
+	setting: {
+		articlePlatform: []
 	}
 }

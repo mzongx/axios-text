@@ -1,5 +1,5 @@
 <template>
-    <div class="app-wrapper">
+    <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
         <div class="sidebar-wrapper">
             <Sidebar class="sidebar-container"/>
         </div>
@@ -12,6 +12,7 @@
 
 <script>
     import { AppMain ,Sidebar ,Navbar } from './index';
+    import { mapGetters } from 'vuex'
     // import store from 'store';
     // import router from 'router';
     // import permission from 'store/permission';
@@ -29,6 +30,9 @@
         // sidebar() {
         //   return this.$store.state.app.sidebar;
         // }
+            ...mapGetters([
+                'sidebar'
+            ])
         }
     }
 </script>

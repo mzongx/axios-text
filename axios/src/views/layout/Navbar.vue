@@ -1,44 +1,64 @@
 <template>
-    <el-menu class="navbar" mode="horizontal">
-        ddd
-    </el-menu>
+	<el-menu class="navbar" mode="horizontal">
+		<Hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></Hamburger>
+		<crumbs/>
+		<el-dropdown class="avatar-container" trigger="click">
+			<div class="avatar-wrapper">
+				<img class="user-avatar" :src="avatar">
+				<i class="el-icon-caret-bottom"/>
+			</div>
+			<el-dropdown-menu class="user-dropdown" slot="dropdown">
+				<router-link  class='inlineBlock' to="/">
+					<el-dropdown-item>
+					首页
+					</el-dropdown-item>
+				</router-link>
+				<router-link  class='inlineBlock' to="/admin/profile">
+					<el-dropdown-item>
+					设置
+					</el-dropdown-item>
+				</router-link>
+				<el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
+			</el-dropdown-menu>
+		</el-dropdown>
+	</el-menu>
 </template>
 
 <script>
-    // import { mapGetters } from 'vuex'
-    // import Levelbar from './Levelbar';
-    // import Hamburger from 'components/Hamburger';
+    import { mapGetters } from 'vuex';
+    import crumbs from './crumbs';
+    import Hamburger from 'components/Hamburger';
     // import ErrLog from 'components/ErrLog';
     // import errLogStore from 'store/errLog';
 
     export default {
-      // components: {
-      //   Levelbar,
-      //   Hamburger,
-      //   ErrLog
-      // },
-      // data() {
-      //   return {
-      //     log: errLogStore.state.errLog
-      //   }
-      // },
-      // computed: {
-      //   ...mapGetters([
-      //     'sidebar',
-      //     'name',
-      //     'avatar'
-      //   ])
-      // },
-      // methods: {
-      //   toggleSideBar() {
-      //     this.$store.dispatch('ToggleSideBar')
-      //   },
-      //   logout() {
-      //     this.$store.dispatch('LogOut').then(() => {
-      //       this.$router.push({ path: '/login' })
-      //     });
-      //   }
-      // }
+      components: {
+        crumbs,
+        Hamburger,
+        // ErrLog
+      },
+      data() {
+        return {
+          // log: errLogStore.state.errLog
+        }
+      },
+      computed: {
+        ...mapGetters([
+          'sidebar',
+          'name',
+          'avatar'
+        ])
+      },
+      methods: {
+        toggleSideBar() {
+          this.$store.dispatch('ToggleSideBar')
+        },
+        logout() {
+          this.$store.dispatch('LogOut').then(() => {
+            this.$router.push({ path: '/login' })
+          });
+        }
+      }
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>

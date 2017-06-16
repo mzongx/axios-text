@@ -27,5 +27,6 @@ Object.keys(filters).forEach(key => {
 /* eslint-disable no-new */
 new Vue({
 	router,
+	store,
 	render: h => h(App)
 }).$mount('#app');
