@@ -53,7 +53,7 @@ export default new Router({
 			redirect: '/permission/index',
 			name: '权限测试',
 			icon: 'quanxian',
-			meta: {role: ['admin']},
+			meta: {role: ['admin']},//这个页面只有role==admin才能访问
 			noDropdown: true,
 			children: [
 				{path: 'index', component: Permission, name: '权限测试页',meta: {role: ['admin']}}

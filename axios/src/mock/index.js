@@ -1,29 +1,26 @@
-import Mock from 'mockjs'
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import loginAPI from './login';
+import articleAPI from './article';
+import article_tableAPI from './article_table';
+import remoteSearchAPI from './remoteSearch';
+const mock = new MockAdapter(axios);
 
-const List = [];
-const count = 10;
+// 登录相关
+mock.onPost('/login/loginbyemail').reply(loginAPI.loginByEmail);
+mock.onPost('/login/logout').reply(loginAPI.logout);
+mock.onGet('/user/info').reply(loginAPI.getInfo);
 
-// for (let i = 0; i < count; i++) {
-	List.push(Mock.mock('www.miao.com',{
-		name: '@cname',
-		'age|1-100': 1,
-		color: '@color'
-	}))
-// }
+// 文章相关
+mock.onGet('/article/list').reply(articleAPI.getList);
+mock.onGet('/article/detail').reply(articleAPI.getArticle);
+
+// table example相关
+mock.onGet('/article_table/list').reply(article_tableAPI.getList);
+mock.onGet('/article_table/pv').reply(article_tableAPI.getPv);
+
+// 搜索相关
+mock.onGet('/search/user').reply(remoteSearchAPI.searchUser);
 
 
- 
-export default Mock.mock('/getInviteList/',{
-	data: {
-		'list|0-10': [{
-			
-			'icon': '@image',
-			'name': '@cname',
-			'inviteTime': '@date'
-		}],
-		'hasMore|0-1': 1,
-		'invitePeopleNum|1-50': 20,
-		'getAwardNum|10-600': 12,
-		'hasAward|0-1': 1
-	}
-})
+export default mock;

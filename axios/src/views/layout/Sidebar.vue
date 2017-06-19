@@ -16,6 +16,10 @@
 </template>
 
 <script>
+	/*
+	*如果侧边栏不分权限访问，则$router.options.routes直接循环即可
+	*分权限的话，就要对route进行权限区分
+	*/
 	// import permissionRoutes from 'store/permission';
 	export default {
 		name: 'Sidebar',
@@ -25,7 +29,7 @@
 			}
 		},
 		mounted() {
-			console.log(this.$router.options.routes)
+			// console.log(this.$router.options.routes)
 		},
 		methods: {
 
