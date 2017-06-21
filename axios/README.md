@@ -2,7 +2,11 @@
 
 > a simple test from axios
 
-## Build Setup
+## 关于登录的流程
+
+1.在login页登录的时候，根据用户名来设置token同时存到cookie，根据token来判断页面是否登录，当用户直接访问首页的时候，有token，就直接跳，说明登录过。若没有token，就返回登录页
+
+## Build Setupf
 
 ``` bash
 # install dependencies

@@ -10,7 +10,7 @@ const userMap = {
     role: ['editor'],
     token: 'editor',
     introduction: '我是编辑',
-    avatar: 'https://wdl.wallstreetcn.com/48a3e1e0-ea2c-4a4e-9928-247645e3428b',
+    avatar: 'http://img5.duitang.com/uploads/item/201601/06/20160106194658_d3i8T.thumb.224_0.jpeg',
     name: '普通编辑小张'
 
   },

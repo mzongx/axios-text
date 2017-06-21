@@ -14,8 +14,8 @@
 	import { AppMain ,Sidebar ,Navbar } from './index';
 	import { mapGetters } from 'vuex'
 	import store from 'store';
-	// import router from 'router';
-	// import permission from 'store/permission';
+	import router from 'router';
+	import permission from 'router/permission';
 	// import { Loading } from 'element-ui';
 	// let loadingInstance;
 	export default {
@@ -38,6 +38,11 @@
 			}
 
 			store.dispatch('GetInfo').then(() => {
+				//获取数据之后，就要根据当前的roles来决定权限
+				permission.init({
+					roles: store.getters.roles,
+					router: router.options.routes
+		     		});
 				next();
 			}).catch(err => {
 				console.log(err);
