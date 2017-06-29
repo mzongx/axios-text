@@ -4,7 +4,7 @@ const userMap = {
     token: 'admin',
     introduction: '我是超级管理员',
     avatar: 'https://wdl.wallstreetcn.com/48a3e1e0-ea2c-4a4e-9928-247645e3428b',
-    name: '超级管理员小潘'
+    name: '超级管理员喵大仙'
   },
   editor: {
     role: ['editor'],
@@ -29,7 +29,7 @@ export default {
     return new Promise((resolve, reject) => {
       if (userMap[email.split('@')[0]]) {
         setTimeout(() => {
-          resolve([200, {
+          resolve([200, {//200是status
             data: userMap[email.split('@')[0]]
           }]);
         }, 500);

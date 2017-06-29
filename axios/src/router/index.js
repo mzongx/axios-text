@@ -18,6 +18,10 @@ const dashboard = resolve => require(['../views/dashboard/index'], resolve);
 // Introduction
 const Introduction = resolve => require(['../views/introduction/index'], resolve); 
 
+// components
+const componentsIndex = resolve => require(['../views/components/index'], resolve);
+const Tinymce = resolve => require(['../views/components/tinymce'], resolve);
+
 // permission
 const Permission = resolve => require(['../views/permission/index'], resolve);
 
@@ -29,9 +33,9 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
-		{path: '/login', component: Login, hidden: true},
-		{path: '/sendpwd', component: sendpwd, hidden: true},
-		{path: '/reset', component: reset, hidden: true},
+		{ path: '/login', component: Login, hidden: true },
+		{ path: '/sendpwd', component: sendpwd, hidden: true },
+		{ path: '/reset', component: reset, hidden: true },
 		{ path: '/404', component: err404, hidden: true },
 		{ path: '/401', component: err401, hidden: true },
 		{
@@ -63,6 +67,17 @@ export default new Router({
 			noDropdown: true,
 			children: [
 				{path: 'index', component: Permission, name: '权限测试页',meta: {role: ['admin']}}
+			]
+		},
+		{
+			path: '/components',
+			component: Layout,
+			redirect: '/components/index',
+			name: '组件',
+			icon: 'zujian',
+			children: [
+				{path: 'index', component: componentsIndex, name: '介绍'},
+				{path: 'tinymce', component: Tinymce, name:'富文本编辑器'}
 			]
 		},
 		{

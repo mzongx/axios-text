@@ -1,19 +1,30 @@
 <template>
 	<div class="app-container">
-		<div style='margin-bottom:15px;'>你的权限： admin</div>
+		<div style='margin-bottom:15px;'>你的权限： {{ roles }}</div>
 		切换权限：
-		<el-radio-group>
+		<el-radio-group v-model="role">
 			<el-radio-button label="editor"></el-radio-button>
 		</el-radio-group>
 	</div>
 </template>
 
 <script>
-    // import { mapGetters } from 'vuex';
+    import { mapGetters } from 'vuex';
     export default{
     		data() {
     			return {
-    				
+    				role: ''
+    			}
+    		},
+    		computed: {
+    			...mapGetters([
+    				'roles'
+    			])
+    		},
+    		watch: {
+    			role(val) {
+    				this.$store.commit('SET_ROLES', [val]);
+    				window.location.reload();
     			}
     		}
     }
